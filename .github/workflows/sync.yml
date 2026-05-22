@@ -29,6 +29,10 @@ jobs:
             yihui/servr
             yihui/gglite
             yihui/knitr
+            rstudio/rmarkdown-book
+            rstudio/rmarkdown-cookbook
+            rstudio/bookdown
+            rstudio/blogdown
           )
           for entry in "${repos[@]}"; do
             repo="${entry##*/}"
