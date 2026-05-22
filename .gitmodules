@@ -2,3 +2,51 @@
 	path = litedown
 	url = https://github.com/yihui/litedown.git
 	branch = gh-pages
+[submodule "lt"]
+	path = lt
+	url = https://github.com/yihui/lt.git
+	branch = gh-pages
+[submodule "mime"]
+	path = mime
+	url = https://github.com/yihui/mime.git
+	branch = gh-pages
+[submodule "testit"]
+	path = testit
+	url = https://github.com/yihui/testit.git
+	branch = gh-pages
+[submodule "xfun"]
+	path = xfun
+	url = https://github.com/yihui/xfun.git
+	branch = gh-pages
+[submodule "tinyimg"]
+	path = tinyimg
+	url = https://github.com/yihui/tinyimg.git
+	branch = gh-pages
+[submodule "servr"]
+	path = servr
+	url = https://github.com/yihui/servr.git
+	branch = gh-pages
+[submodule "gglite"]
+	path = gglite
+	url = https://github.com/yihui/gglite.git
+	branch = gh-pages
+[submodule "knitr"]
+	path = knitr
+	url = https://github.com/yihui/knitr.git
+	branch = gh-pages
+[submodule "rmarkdown-book"]
+	path = rmarkdown-book
+	url = https://github.com/rstudio/rmarkdown-book.git
+	branch = gh-pages
+[submodule "rmarkdown-cookbook"]
+	path = rmarkdown-cookbook
+	url = https://github.com/rstudio/rmarkdown-cookbook.git
+	branch = gh-pages
+[submodule "bookdown"]
+	path = bookdown
+	url = https://github.com/rstudio/bookdown.git
+	branch = gh-pages
+[submodule "blogdown"]
+	path = blogdown
+	url = https://github.com/rstudio/blogdown.git
+	branch = gh-pages
