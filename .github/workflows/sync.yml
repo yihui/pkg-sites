@@ -1,0 +1,42 @@
+name: Sync package sites
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull gh-pages from package repos
+        run: |
+          repos=(
+            yihui/litedown
+          )
+          for entry in "${repos[@]}"; do
+            repo="${entry##*/}"
+            rm -rf "$repo"
+            if git clone --branch gh-pages --depth 1 \
+              "https://github.com/${entry}.git" "$repo" 2>/dev/null; then
+              rm -rf "$repo/.git"
+              echo "✓ $repo"
+            else
+              echo "✗ $repo (no gh-pages branch)"
+            fi
+          done
+
+      - name: Commit and push if changed
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            dirs=$(git diff --cached --name-only | cut -d/ -f1 | sort -u | tr '\n' ' ')
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "sync ${dirs% }"
+            git push
+          fi
