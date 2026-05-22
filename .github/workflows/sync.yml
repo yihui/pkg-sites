@@ -5,28 +5,19 @@ on:
     - cron: '0 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
 
-      - name: Pull gh-pages from package repos
-        run: |
-          repos=(
-            yihui/litedown
-          )
-          for entry in "${repos[@]}"; do
-            repo="${entry##*/}"
-            rm -rf "$repo"
-            if git clone --branch gh-pages --depth 1 \
-              "https://github.com/${entry}.git" "$repo" 2>/dev/null; then
-              rm -rf "$repo/.git"
-              echo "✓ $repo"
-            else
-              echo "✗ $repo (no gh-pages branch)"
-            fi
-          done
+      - name: Update submodules to latest
+        run: git submodule update --remote
 
       - name: Commit and push if changed
         run: |

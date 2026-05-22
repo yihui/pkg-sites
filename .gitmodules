@@ -1,0 +1,4 @@
+[submodule "litedown"]
+	path = litedown
+	url = https://github.com/yihui/litedown.git
+	branch = gh-pages
