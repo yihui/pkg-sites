@@ -16,8 +16,28 @@ jobs:
         with:
           submodules: true
 
-      - name: Update submodules to latest
-        run: git submodule update --remote
+      - name: Add or update submodules
+        run: |
+          repos=(
+            yihui/litedown
+            yihui/lt
+            yihui/mime
+            yihui/testit
+            yihui/rolldown
+            yihui/xfun
+            yihui/tinyimg
+            yihui/servr
+            yihui/gglite
+            yihui/knitr
+          )
+          for entry in "${repos[@]}"; do
+            repo="${entry##*/}"
+            if [ -d "$repo" ]; then
+              git -C "$repo" fetch origin gh-pages && git -C "$repo" reset --hard origin/gh-pages || true
+            else
+              git submodule add -b gh-pages "https://github.com/${entry}.git" "$repo" 2>/dev/null || true
+            fi
+          done
 
       - name: Commit and push if changed
         run: |
