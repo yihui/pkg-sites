@@ -37,7 +37,7 @@ jobs:
           for entry in "${repos[@]}"; do
             repo="${entry##*/}"
             if [ -d "$repo" ]; then
-              git -C "$repo" fetch origin gh-pages && git -C "$repo" reset --hard origin/gh-pages || true
+              git submodule update --remote "$repo" || true
             else
               git submodule add -b gh-pages "https://github.com/${entry}.git" "$repo" 2>/dev/null || true
             fi
