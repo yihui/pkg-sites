@@ -36,12 +36,11 @@ jobs:
           )
           for entry in "${repos[@]}"; do
             repo="${entry##*/}"
-            if [ -d "$repo" ]; then
-              git submodule update --init --remote "$repo"
-            else
+            if [ ! -d "$repo" ]; then
               git submodule add -b gh-pages "https://github.com/${entry}.git" "$repo"
             fi
           done
+          git submodule update --remote --recursive
 
       - name: Commit and push if changed
         run: |
