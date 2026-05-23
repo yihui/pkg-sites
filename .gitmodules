@@ -50,3 +50,7 @@
 	path = blogdown
 	url = https://github.com/rstudio/blogdown.git
 	branch = gh-pages
+[submodule "rolldown"]
+	path = rolldown
+	url = https://github.com/yihui/rolldown.git
+	branch = gh-pages
