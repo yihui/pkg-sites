@@ -37,9 +37,9 @@ jobs:
           for entry in "${repos[@]}"; do
             repo="${entry##*/}"
             if [ -d "$repo" ]; then
-              git submodule update --remote "$repo" || true
+              git submodule update --remote "$repo"
             else
-              git submodule add -b gh-pages "https://github.com/${entry}.git" "$repo" 2>/dev/null || true
+              git submodule add -b gh-pages "https://github.com/${entry}.git" "$repo"
             fi
           done
 
