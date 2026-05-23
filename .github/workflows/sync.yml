@@ -12,11 +12,9 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
+      - uses: actions/checkout@v6
 
-      - name: Add or update submodules
+      - name: Add submodules
         run: |
           repos=(
             yihui/litedown
@@ -40,6 +38,9 @@ jobs:
               git submodule add -b gh-pages "https://github.com/${entry}.git" "$repo"
             fi
           done
+
+      - name: Update submodules
+        run: |
           git submodule update --remote --recursive
 
       - name: Commit and push if changed
