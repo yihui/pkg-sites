@@ -27,6 +27,7 @@ jobs:
             yihui/servr
             yihui/gglite
             yihui/knitr
+            yihui/knitr-examples
             rstudio/rmarkdown-book
             rstudio/rmarkdown-cookbook
             rstudio/bookdown
