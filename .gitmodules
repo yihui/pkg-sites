@@ -54,3 +54,7 @@
 	path = rolldown
 	url = https://github.com/yihui/rolldown.git
 	branch = gh-pages
+[submodule "knitr-examples"]
+	path = knitr-examples
+	url = https://github.com/yihui/knitr-examples.git
+	branch = gh-pages
